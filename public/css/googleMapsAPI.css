@@ -1,0 +1,11 @@
+.ggmaps{
+	height:550px;
+}
+
+
+.ggmaps_carte{
+	background-color: cornsilk;
+	text-align: center;
+	border-style: groove;
+	border : black;
+}
