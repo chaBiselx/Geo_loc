@@ -14,7 +14,6 @@ function init(pos_lat, pos_lng){
 	let pos = {}, options ;
 
 	if( pos_lat != null || pos_lng != null ){
-		console.log("allow");
 		pos = {
 			zoom : 14,
 			lat: pos_lat ,
@@ -29,8 +28,6 @@ function init(pos_lat, pos_lng){
 	        disableDoubleClickZoom: true
 	    };
 	}else{	//default center of france without position
-		console.log("not allow");
-
 		options = {
 	        center: new google.maps.LatLng( 46.92475  , 2.0517 ) ,
 	        zoom: 6,

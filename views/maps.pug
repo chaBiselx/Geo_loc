@@ -6,7 +6,9 @@ block content
   hr
     
   script getLocation()
-
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    button(type="submit") actualiser
   div(id="ggmaps_map", style="width:94%; height:500px; margin: auto;")
   
   hr

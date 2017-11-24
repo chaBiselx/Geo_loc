@@ -140,6 +140,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 
 app.get('/maps', mapsController.getMaps);
+app.post('/maps', mapsController.postActualise);
 /**
  * API examples routes.
  */
