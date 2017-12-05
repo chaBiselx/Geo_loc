@@ -14,16 +14,24 @@ exports.getMaps = (req, res) => {
   });
 };
 
-exports.postActualise = (req, res) => {
-  console.log("actualise db");
-
-  httprequest(res, res, stanlib);
-
+exports.postActualise = (req, res) => {//actualise manuellement
+  actualise();
   res.redirect('/maps');
 }
 
-function httprequest(res, res, url){
-  http.get(stanlib, (resp) => {
+exports.actualiseDB = (req, res) => {
+  console.log("Actualisation base de donnee");
+  actualise()
+
+}
+
+function actualise(){
+
+  httprequest( stanlib);
+}
+
+function httprequest( url){
+  http.get(url, (resp) => {
   let data = '';
 
   // A chunk of data has been recieved.
@@ -41,8 +49,8 @@ function httprequest(res, res, url){
   });
 }
 
-function httpsrequest(res, res, url){
-  https.get(stanlib, (resp) => {
+function httpsrequest(url){
+  https.get(url, (resp) => {
   let data = '';
 
   // A chunk of data has been recieved.

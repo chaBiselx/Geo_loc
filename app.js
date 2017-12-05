@@ -235,4 +235,10 @@ app.listen(app.get('port'), () => {
   console.log('  Press CTRL-C to stop\n');
 });
 
+setInterval(function(){
+
+  mapsController.actualiseDB();
+
+}, 600000);
+
 module.exports = app;
