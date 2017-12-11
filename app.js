@@ -140,6 +140,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 
 app.get('/maps', mapsController.getMaps);
+app.post('/maps', mapsController.postActualise);
 /**
  * API examples routes.
  */
@@ -233,5 +234,11 @@ app.listen(app.get('port'), () => {
   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });
+
+setInterval(function(){
+
+  mapsController.actualiseDB();
+
+}, 600000);
 
 module.exports = app;
