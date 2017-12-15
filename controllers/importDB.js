@@ -15,7 +15,7 @@ exports.importStationsVelib = (velos) => {
     xml2js.parseString(velos, {explicitRoot: false, attrValueProcessors: [numberify]}, (err, result) => {
         exports.stationsVelib = result.markers[0].marker.map(x => x.$);
     });
-});
+};
 
 // http://opendata.grandnancy.eu/fileadmin/fichiers/opendata/Bus_arrets/Arrets_Stan_2014-01_01.kml
 exports.importArretsStan = (arrets) => {
@@ -30,4 +30,4 @@ exports.importArretsStan = (arrets) => {
           };
         });
     });
-});
+};

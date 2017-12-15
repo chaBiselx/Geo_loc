@@ -1,7 +1,11 @@
 const https = require('https');
 const http = require('http');
 
-const stanlib = "http://www.velostanlib.fr/service/carto"
+const importDB = require('./importDB');
+
+const stanVelib = "http://www.velostanlib.fr/service/carto"
+const stanArrets = "http://opendata.grandnancy.eu/fileadmin/fichiers/opendata/Bus_arrets/Arrets_Stan_2014-01_01.kml"
+
 /**
  * GET /maps
  * List all maps.
@@ -27,10 +31,12 @@ exports.actualiseDB = (req, res) => {
 
 function actualise(){
 
-  httprequest( stanlib);
+  httprequest(stanVelib, importDB.importStationsVelib);
+  httprequest(stanArrets, importDB.importArretsStan);
+
 }
 
-function httprequest( url){
+function httprequest( url, callback){
   http.get(url, (resp) => {
   let data = '';
 
@@ -41,7 +47,7 @@ function httprequest( url){
 
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    console.log(data); //TODO COnvert in db
+    callback(data)
   });
 
   }).on("error", (err) => {
